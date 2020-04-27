@@ -66,6 +66,7 @@ Successful execution :
 after summarization , since there are a large number of sentences in each text document, I have extracted a sample of top 50 sentences from 150 sentences that I have considered. Also, I have displayed the similarity score for the sentences as well.
 ![image](https://user-images.githubusercontent.com/27561736/80410963-01cbf280-8891-11ea-9860-a5eb65f00a14.png)
 
+I have also created another implementation to display the summary and it asks the user to display how many lines of summary that he needs. Below, I have attached the screenshots as well.
 
 
 
