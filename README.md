@@ -62,7 +62,8 @@ Each sentence is considered as a node of our graph. The links between those sent
 I used the Treebank Word Tokenizer to perform the tokenization. I used the concept of stopword and used it to remove the less important words. I used the concept of POS tagging and the PorterStemmer for text summarization. 
 
 
-
+Successful execution : 
+![image](https://user-images.githubusercontent.com/27561736/80410963-01cbf280-8891-11ea-9860-a5eb65f00a14.png)
 
 
 
