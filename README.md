@@ -69,6 +69,13 @@ after summarization , since there are a large number of sentences in each text d
 I have also created another implementation to display the summary and it asks the user to display how many lines of summary that he needs. Below, I have attached the screenshots as well.
 ![image](https://user-images.githubusercontent.com/27561736/80429024-ce00c500-88b0-11ea-88d3-e896bedc4774.png)
 
+![image](https://user-images.githubusercontent.com/27561736/80429107-f12b7480-88b0-11ea-8e28-198b393849c0.png)
+
+In the first image, it asks for the number of lines of summary to be displayed. After that it shows the sample of documents in that particular cluster that I selected. When I gave the input as 15, in the next image it shows the 15-line summary of the documents in the cluster specified. This is the second implementation that I have used for summmarization of the cluster documents.
+
+## Evaluating the quality of the clustering using the silhouette coefficient
+I have run the silhouette coefficient code using the Jupyter notebook, as I wanted to clearly able to distinguish the difference in scores when we keep the changing the number of clusters to fit our document needs.
+when i give the number of clusters as 5 : The silhouette coefficient is almost 0.8 which is nearly close to 1.
 
 
 
