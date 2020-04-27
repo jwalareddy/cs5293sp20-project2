@@ -76,6 +76,7 @@ In the first image, it asks for the number of lines of summary to be displayed. 
 ## Evaluating the quality of the clustering using the silhouette coefficient
 I have run the silhouette coefficient code using the Jupyter notebook, as I wanted to clearly able to distinguish the difference in scores when we keep the changing the number of clusters to fit our document needs.
 when i give the number of clusters as 5 : The silhouette coefficient is almost 0.8 which is nearly close to 1.
+![image](https://user-images.githubusercontent.com/27561736/80429490-d7d6f800-88b1-11ea-8266-5fe43d4df0a3.png)
 
 
 
