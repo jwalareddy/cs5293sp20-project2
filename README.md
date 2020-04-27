@@ -48,4 +48,40 @@ Then I used another function to remove the stop words in the text document.
 ~~~
 def remove_stopwords(sentences):
 ~~~
+Next with another function I calculated the frequency of a particular word and the word count of all the words occuring in the document that I have taken. 
+
+## CLustering
+Next for Clustering, I used the Tfidf vectorizer to initially represent all the text documents as in vectorized form. Next I built the model using the kmeans clustering with the initial number of clusters as 5. 
+After the text summarization we also rank the sentences for which the algorithm basically consists of :
+Finding links between sentences by looking for overlapping terminology
+Using Google Pagerank on the sentence network to rank sentences in order of importance
+
+## TextRank algorithm summarization used:
+* Take input file which consists of the text and use sentence tokenizer them to split them into sentences.
+Each sentence is considered as a node of our graph. The links between those sentences are the edges that are being used. The edge weight between the sentences is considered as the similarity measure. I also used the wordnet library to obtain the similarity score between the sentences in the text. we find the best score for each of the sentences in the library. Finally we extract the top n sentences and also I used an another approach to specify the length of the summary as 100.
+I used the Treebank Word Tokenizer to perform the tokenization. I used the concept of stopword and used it to remove the less important words. I used the concept of POS tagging and the PorterStemmer for text summarization. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## References
+https://arxiv.org/pdf/1602.03606.pdf
 
