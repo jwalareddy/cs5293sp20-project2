@@ -59,12 +59,12 @@ Using Google Pagerank on the sentence network to rank sentences in order of impo
 ## TextRank algorithm summarization used:
 * Take input file which consists of the text and use sentence tokenizer them to split them into sentences.
 Each sentence is considered as a node of our graph. The links between those sentences are the edges that are being used. The edge weight between the sentences is considered as the similarity measure. I also used the wordnet library to obtain the similarity score between the sentences in the text. we find the best score for each of the sentences in the library. Finally we extract the top n sentences and also I used an another approach to specify the length of the summary as 100.
-I used the Treebank Word Tokenizer to perform the tokenization. I used the concept of stopword and used it to remove the less important words. I used the concept of POS tagging and the PorterStemmer for text summarization. 
+I used the Treebank Word Tokenizer to perform the tokenization. I used the concept of stopword and used it to remove the less important words. I used the concept of POS tagging and the PorterStemmer and gensim package for text summarization. 
 
 
 Successful execution : 
+after summarization , since there are a large number of sentences in each text document, I have extracted a sample of top 50 sentences from 150 sentences that I have considered. Also, I have displayed the similarity score for the sentences as well.
 ![image](https://user-images.githubusercontent.com/27561736/80410963-01cbf280-8891-11ea-9860-a5eb65f00a14.png)
-
 
 
 
