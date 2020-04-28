@@ -116,6 +116,9 @@ def write_files(summary, key_phrases, filename):
     summary_file.write(summary)
     summary_file.close()
  ~~~
+ 
+All the summaries of the individual cluster for a document have been written to the SUMMARY.md file. However, only a particular number of sentences for eeach summary would be printed by default, the entire summary is not printed. As attached in the screenshot above, I am able to give the input for the number of lines of summary that I would want for a given document. In the same way, in the SUMMARY.md file I have printed the 10-line summary for each of the cluster documents.
+
 ## Creating the Pipfile and the Piplock file for my project:
 The Pipfile and the Piplock file which are the constituents of my project's virtual environment are created using the following command :
 ~~~
