@@ -9,12 +9,10 @@ lemma = WordNetLemmatizer()
     
 
 def cleanData(doc):
-    #To get all sentances from a paragraph.
-    tokenizer = RegexpTokenizer(r'[^.?!]+')   #regex expression to get all sentances. It denotes occurrence of anything except a class containing full stop(.), question mark(?), exclamatory mark(!) and a space.
+    tokenizer = RegexpTokenizer(r'[^.?!]+')   
     sentancesList = tokenizer.tokenize(doc)
     wordsDict = {}
-    #To get all words from sentances.
-    tokenizer = RegexpTokenizer(r'\w+\'*-*\w+')   #regex expression to get all words. It denotes occurrence of one or more words, then occurrence of ' zero or more times, then occurrence of one or more words.
+    tokenizer = RegexpTokenizer(r'\w+\'*-*\w+') 
     for i in range(len(sentancesList)):
         sentanceWordsList = tokenizer.tokenize(sentancesList[i])
         for j in range(len(sentanceWordsList)):
@@ -37,9 +35,6 @@ def cleanData(doc):
         dictList = wordsDict[word]
         for j in range(len(dictList)):
             termDocMatrix[i][dictList[j]] += 1
-    #print(sentancesList)
-    #print(wordsList)
-    #print(termDocMatrix)
     return sentancesList, wordsList, termDocMatrix             
 
 
@@ -105,6 +100,43 @@ def summarizer(doc=None, k=4):
         summary += sentancesList[summarySentancesList[i]]
         summary += '.'
         summary += '\n'
+    return summary
+"""
+"""
+def cluster_texts(texts, clusters=3):
+    Transform texts to Tf-Idf coordinates and cluster texts using K-Means
+    vectorizer = TfidfVectorizer(tokenizer=process_text,
+                                 stop_words=stopwords.words('english'),
+                                 max_df=0.5,
+                                 min_df=0.1,
+                                 lowercase=True)
+    tfidf_model = vectorizer.fit_transform(texts)
+    km_model = KMeans(n_clusters=clusters)
+    km_model.fit(tfidf_model)
+    clustering = collections.defaultdict(list)
+    for idx, label in enumerate(km_model.labels_):
+        clustering[label].append(idx)
+    return clustering
+clusters = cluster_texts(sentences)
+#print(dict(clusters))
+print(clusters)
+def extract_sentences(text, summary_length=100, language='english'):
+    sentence_detector = nltk.data.load('tokenizers/punkt/'+language+'.pickle')
+    sentence_tokens = sentence_detector.tokenize(text.strip())
+    graph = build_graph(sentence_tokens)
+    calculated_page_rank = nx.pagerank(graph, weight='weight')
+    sentences = sorted(calculated_page_rank, key=calculated_page_rank.get,
+                       reverse=True)
+    # I specified the length of the summary to be 100, but we can arbitarily change it
+    summary = ' '.join(sentences)
+    summary_words = summary.split()
+    summary_words = summary_words[0:summary_length]
+    dot_indices = [idx for idx, word in enumerate(summary_words) if word.find('.') != -1]
+    if dot_indices:
+        last_dot = max(dot_indices) + 1
+        summary = ' '.join(summary_words[0:last_dot])
+    else:
+        summary = ' '.join(summary_words)
     return summary
 """
 
