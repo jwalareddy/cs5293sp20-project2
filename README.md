@@ -96,7 +96,7 @@ objs = [df1, pd.DataFrame(df['metadata'].tolist()).iloc[:, :6]]
 df4 = pd.concat(objs, axis=1).drop('metadata', axis=1)
 df5 = df4[['body_text']]
 ~~~
-All these functions are defined in __init__.py
+All these functions are defined in __init__.py. We can run individual functions to see how each output is obtained. I have tried in my Jupyter notebook in the same way and I have aggregated individual functions into one python file.
 extra and other approaches for same implementation are defined in other python files.
 Individual python functions have also been used to preprocess and remove stop words and prepare the textual data for clustering and summarization.
 ## Tokenizing
