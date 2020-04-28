@@ -38,8 +38,32 @@ to pull the changes, if any, made from the github repository to our local enviro
 ~~~
 git pull origin master
 ~~~
+
+## Initial work on the project.
+As per the initial data extraction, since we have a lot of files in the pdf_json directory, I created a sub-folder pdf_json1 which contains a subset of these files. 
 ## Description of the methodology and the functions used :
-Initially, I randomly selected 20 json files from the pdf_json directory and then performed the summarization of those documents in the entire directory. To summarize them, I did the initial text cleaning and a set of other functions implementations. I used the function 
+Initially, I randomly selected random json files from the pdf_json directory and then performed the summarization of those documents in the entire directory. To summarize them, I did the initial text cleaning and a set of other functions implementations. I used the below function where under the "body_text" field, I am extracting the matching values of the "text" field and storing them in a list. 
+
+For reading 10% of the files, I used the following command : 
+~~~
+
+~~~
+~~~
+item = glob.glob(os.path.join('C:/Users/jwala/OneDrive/Desktop/pdf_json1', '*.json'))
+r = np.random.choice(item, int(len(item)*.1))
+
+def readdata():
+    for j, aJson in enumerate(r):
+        with open(aJson) as data:
+            my_data = json.load(data)
+            my_list=[]
+            for value in my_data['body_text']:
+                my_text= value['text']
+                my_list.append(my_text)
+                actual_data = '\n'.join(my_list)
+            return actual_data
+~~~
+
 ~~~
 def remove_punctuation(sentences):
 ~~~
@@ -51,13 +75,14 @@ def remove_stopwords(sentences):
 Next with another function I calculated the frequency of a particular word and the word count of all the words occuring in the document that I have taken. 
 
 ## CLustering
+Once I collected the list, I used the nltk library to tokenize them into individual sentences to be able to do the vectorization. 
 Next for Clustering, I used the Tfidf vectorizer to initially represent all the text documents as in vectorized form. Next I built the model using the kmeans clustering with the initial number of clusters as 5. 
 After the text summarization we also rank the sentences for which the algorithm basically consists of :
 Finding links between sentences by looking for overlapping terminology
 Using Google Pagerank on the sentence network to rank sentences in order of importance
 
 ## TextRank algorithm summarization used:
-* Take input file which consists of the text and use sentence tokenizer them to split them into sentences.
+Take input file which consists of the text and use sentence tokenizer them to split them into sentences.
 Each sentence is considered as a node of our graph. The links between those sentences are the edges that are being used. The edge weight between the sentences is considered as the similarity measure. I also used the wordnet library to obtain the similarity score between the sentences in the text. we find the best score for each of the sentences in the library. Finally we extract the top n sentences and also I used an another approach to specify the length of the summary as 100.
 I used the Treebank Word Tokenizer to perform the tokenization. I used the concept of stopword and used it to remove the less important words. I used the concept of POS tagging and the PorterStemmer and gensim package for text summarization. 
 
@@ -78,9 +103,26 @@ I have run the silhouette coefficient code using the Jupyter notebook, as I want
 when i give the number of clusters as 5 : The silhouette coefficient is almost 0.8 which is nearly close to 1.
 ![image](https://user-images.githubusercontent.com/27561736/80429490-d7d6f800-88b1-11ea-8266-5fe43d4df0a3.png)
 
+## Writing the summaries to the file
+I used the below function to write the summaries to the file titled as SUMMARY.md :
+~~~
+def write_files(summary, key_phrases, filename):
+    key_phrase_file = io.open('SUMMARY.md' + filename, 'w')
+    for key_phrase in key_phrases:
+        key_phrase_file.write(key_phrase + '\n')
+    key_phrase_file.close()
+    summary_file = io.open('SUMMARY.md/' + filename, 'w')
+    summary_file.write(summary)
+    summary_file.close()
+ ~~~
+## Creating the Pipfile and the Piplock file for my project:
+The Pipfile and the Piplock file which are the constituents of my project's virtual environment are created using the following command :
+~~~
+pipenv --python python3
+pipenv install requests
+~~~
 
-
-
+This creates a virtual environment and the Pipfile later. For the second command, it initially installs the requests package and then creates the Piplock file successfully.
 
 
 
