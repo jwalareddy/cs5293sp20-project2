@@ -19,7 +19,7 @@ pipenv install numpy
 I used Google Cloud Platform to create a VM instance in the cloud. I used it for cloning the Git repository, and made changes using the following github actions.
 
 ## Git Repository commands :
-Initially we create a private repository in ouy github accounts using the name cs5293p20-project1. We clone the repository link into our Linux environment by using the following command :
+Initially we create a private repository in ouy github accounts using the name cs5293p20-project2. We clone the repository link into our Linux environment by using the following command :
 ~~~
 https://github.com/jwalareddy/cs5293sp20-project2.git
 ~~~
@@ -103,11 +103,12 @@ Next for Clustering, I used the Tfidf vectorizer to initially represent all the 
 After the text summarization we also rank the sentences for which the algorithm basically consists of :
 Finding links between sentences by looking for overlapping terminology
 Using Google Pagerank on the sentence network to rank sentences in order of importance
+I have used multiple approaches for getting the clusters and summarizing them.
 
 ## TextRank algorithm summarization used:
 Take input file which consists of the text and use sentence tokenizer them to split them into sentences.
 Each sentence is considered as a node of our graph. The links between those sentences are the edges that are being used. The edge weight between the sentences is considered as the similarity measure. I also used the wordnet library to obtain the similarity score between the sentences in the text. we find the best score for each of the sentences in the library. Finally we extract the top n sentences and also I used an another approach to specify the length of the summary as 100.
-I used the Treebank Word Tokenizer to perform the tokenization. I used the concept of stopword and used it to remove the less important words. I used the concept of POS tagging and the PorterStemmer and gensim package for text summarization. 
+I used the Treebank Word Tokenizer to perform the tokenization. I used the concept of stopword and used it to remove the less important words. I used the concept of POS tagging and the PorterStemmer, SnowballStemmer and gensim package for text summarization. 
 
 
 Successful execution : 
