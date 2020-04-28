@@ -44,10 +44,11 @@ As per the initial data extraction, since we have a lot of files in the pdf_json
 ## Description of the methodology and the functions used :
 Initially, I randomly selected random json files from the pdf_json directory and then performed the summarization of those documents in the entire directory. To summarize them, I did the initial text cleaning and a set of other functions implementations. I used the below function where under the "body_text" field, I am extracting the matching values of the "text" field and storing them in a list. 
 
-For reading 10% of the files, I used the following command : 
+For reading 10% of the files, I used the following command : instead of specifying the percentage, I mentioned the raw count of 5000.
 ~~~
-
+count_files = get_glob_files("**/*.json", 5000)
 ~~~
+This command would fetch a given count of 5000 files and that end with the extension .json
 ~~~
 item = glob.glob(os.path.join('C:/Users/jwala/OneDrive/Desktop/pdf_json1', '*.json'))
 r = np.random.choice(item, int(len(item)*.1))
@@ -74,7 +75,7 @@ def remove_stopwords(sentences):
 ~~~
 Next with another function I calculated the frequency of a particular word and the word count of all the words occuring in the document that I have taken. 
 
-## CLustering
+## Clustering
 Once I collected the list, I used the nltk library to tokenize them into individual sentences to be able to do the vectorization. 
 Next for Clustering, I used the Tfidf vectorizer to initially represent all the text documents as in vectorized form. Next I built the model using the kmeans clustering with the initial number of clusters as 5. 
 After the text summarization we also rank the sentences for which the algorithm basically consists of :
