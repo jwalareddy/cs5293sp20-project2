@@ -96,6 +96,15 @@ objs = [df1, pd.DataFrame(df['metadata'].tolist()).iloc[:, :6]]
 df4 = pd.concat(objs, axis=1).drop('metadata', axis=1)
 df5 = df4[['body_text']]
 ~~~
+All these functions are defined in __init__.py
+extra and other approaches for same implementation are defined in other python files.
+Individual python functions have also been used to preprocess and remove stop words and prepare the textual data for clustering and summarization.
+## Tokenizing
+I used the nltk library to tokenize the data. The following library is used for that.
+~~~
+from nltk import sent_tokenize, word_tokenize
+sentences.append(sent_tokenize(sent))
+~~~
 
 ## Clustering
 Once I collected the list, I used the nltk library to tokenize them into individual sentences to be able to do the vectorization. 
