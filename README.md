@@ -153,6 +153,3 @@ This creates a virtual environment and the Pipfile later. For the second command
 
 
 
-## References
-https://arxiv.org/pdf/1602.03606.pdf
-
