@@ -74,6 +74,28 @@ Then I used another function to remove the stop words in the text document.
 def remove_stopwords(sentences):
 ~~~
 Next with another function I calculated the frequency of a particular word and the word count of all the words occuring in the document that I have taken. 
+To run my code I used a separate text file j.txt and inputted all the "body_text" values that I obtained from a sample subset of pdf_json directory. I have run all my python files using the same text file for tokenization and summarization.
+
+This is another approach that I used to read the data initially:
+~~~
+alldicts = []
+for file in os.listdir('C:/Users/jwala/OneDrive/Desktop/pdf_json1'):
+    full_filename = 'C:/Users/jwala/OneDrive/Desktop/pdf_json1' + "/" + file
+    with open(full_filename,'r') as fi:
+        dict = json.load(fi)
+        alldicts.append(dict)
+        
+df = pd.DataFrame(alldicts)
+df
+type(df)
+df.head()
+df1 = df[['metadata']]
+variable = alldicts1.get('metadata', None)
+print(variable)
+objs = [df1, pd.DataFrame(df['metadata'].tolist()).iloc[:, :6]]
+df4 = pd.concat(objs, axis=1).drop('metadata', axis=1)
+df5 = df4[['body_text']]
+~~~
 
 ## Clustering
 Once I collected the list, I used the nltk library to tokenize them into individual sentences to be able to do the vectorization. 
@@ -127,14 +149,6 @@ pipenv install requests
 ~~~
 
 This creates a virtual environment and the Pipfile later. For the second command, it initially installs the requests package and then creates the Piplock file successfully.
-
-
-
-
-
-
-
-
 
 
 
