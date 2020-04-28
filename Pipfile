@@ -1,0 +1,25 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+nltk = "*"
+usaddress = "*"
+google-cloud = "*"
+google = "*"
+commonregex = "*"
+numpy = "*"
+pandas = "*"
+sklearn = "*"
+beautifulsoup = "*"
+beautifulsoup4 = "*"
+sets = "*"
+networkx = "*"
+editdistance = "*"
+requests = "*"
+
+[requires]
+python_version = "3.8"
